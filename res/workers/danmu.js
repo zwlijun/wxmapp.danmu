@@ -120,25 +120,14 @@ Danmu.prototype = {
         return buf.join("; ");
     },
     shot: function() {
-        const rect = this.rect || {
+        const __dm = this;
+        const rect = __dm.rect || {
             width: 150
         };
+        const nw = -(rect.width || 150);
 
-        // console.log("rect.width", rect.width)
-
-        let ratio = this.ratio;
-        let nw = -(rect.width || 150);
-        let currentTime = this.duration; //currentTime == duration 递减
-        let begin = 0;
-        let change = Danmu.width;
-        let duration = this.duration;
-
-        // console.log(currentTime, begin, change, duration);
-
-        const __dm = this;
-
-        // console.log("nw", nw)
-
+        // console.log("rect.width", rect.width, nw)
+        
         __dm.x = nw;
         __dm.style = __dm.css();
 
@@ -146,7 +135,7 @@ Danmu.prototype = {
 
         setTimeout(() => {
             worker.postMessage(new IOMessage(IOMessage.TYPES.DELETE, __dm));
-        }, duration);
+        }, __dm.duration);
     }
 };
 
