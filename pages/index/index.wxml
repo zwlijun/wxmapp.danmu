@@ -1,0 +1,16 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <view class="player-box">
+    <live-player 
+          id="mplayer"
+          class="player-core"
+          src="https://stream.flv" 
+          mode="live" />
+    <cover-view class="danmu-layerbox">
+      <block wx:for="{{$dm}}" wx:for-item="dm" wx:key="uuid">
+        <cover-view id="dm_{{dm.uuid}}" style="{{dm.style}}" class="danmu-text {{dm.tween ? '' : 'ani'}}">{{dm.text}}</cover-view>
+      </block>
+    </cover-view>
+  </view>
+</view>
+

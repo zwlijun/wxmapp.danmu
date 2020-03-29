@@ -1,0 +1,17 @@
+/* pages/index/index.wxss */
+@import "../../res/css/danmu.wxss";
+.container{
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.player-box{
+  width: 100%;
+  height: 442rpx;
+  position: relative;
+}
+.player-core{
+  width: 100%;
+  height: 442rpx;
+}
