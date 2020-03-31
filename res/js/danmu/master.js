@@ -11,7 +11,8 @@ const DanmuMaster = {
     testTimer: null,
     init: function(context, selector) {
         if (!context || !selector) {
-            throw new Error("Illegal `context` or `selector` arguments!")
+            console.error("Illegal `context` or `selector` arguments!");
+            return ;
         }
         DanmuMaster.context = context;
         //-------------------------------
@@ -26,7 +27,8 @@ const DanmuMaster = {
         if (nf) {
             nf.boundingClientRect((rect) => {
                 if (!rect || !rect.width || !rect.height) {
-                    throw new Error("Not found the DANMU BOX");
+                    console.error("Not found the DANMU BOX");
+                    return ;
                 }
                 DanmuMaster.master.postMessage(new IOMessage(IOMessage.TYPES.INIT, rect))
             }).exec();
