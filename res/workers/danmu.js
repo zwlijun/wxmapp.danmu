@@ -124,10 +124,11 @@ Danmu.prototype = {
         const rect = __dm.rect || {
             width: 150
         };
-        const nw = -(rect.width || 150);
+        let nw = -(rect.width || 150);
+        let duration = __dm.duration;
 
         // console.log("rect.width", rect.width, nw)
-        
+
         __dm.x = nw;
         __dm.style = __dm.css();
 
@@ -135,7 +136,7 @@ Danmu.prototype = {
 
         setTimeout(() => {
             worker.postMessage(new IOMessage(IOMessage.TYPES.DELETE, __dm));
-        }, __dm.duration);
+        }, duration);
     }
 };
 
