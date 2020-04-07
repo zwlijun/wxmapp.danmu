@@ -97,7 +97,7 @@ const DanmuMaster = {
             DanmuMaster.master.postMessage(new IOMessage(IOMessage.TYPES.MESSAGE, {
                 text: text,
                 offsetTopRatio: options.offsetTopRatio || 0.1,
-                offsetBottomRatio: options.offsetTopRatio || 0.2,
+                offsetBottomRatio: options.offsetBottomRatio || 0.2,
                 fontSize: options.fontSize || [24, 40],
                 duration: options.duration || [3000, 8000],
                 ratio: options.ratio || 1
