@@ -456,29 +456,33 @@ WebIM.prototype = {
         //   - TIM.TYPES.KICKED_OUT_MULT_ACCOUNT 多实例登录被踢
         //   - TIM.TYPES.KICKED_OUT_MULT_DEVICE 多终端登录被踢
         //   - TIM.TYPES.KICKED_OUT_USERSIG_EXPIRED 签名过期被踢（v2.4.0起支持）。
-        wx.showModal({
-            title: "下线通知",
-            content: "在其他设备登录",
-            showCancel: true,
-            cancelText: "取消",
-            cancelColor: "#333333",
-            confirmText: "重新登录",
-            confirmColor: "#FF6D00",
-            success: (res) => {
-                var confirm = res.confirm;
-                var cancel = res.cancel;
+        if(event.data.type === TIM.TYPES.KICKED_OUT_USERSIG_EXPIRED || event.data.type === TIM.TYPES.KICKED_OUT_MULT_ACCOUNT){
+            this.login();
+        }else{
+            wx.showModal({
+                title: "下线通知",
+                content: "在其他设备登录",
+                showCancel: true,
+                cancelText: "取消",
+                cancelColor: "#333333",
+                confirmText: "重新登录",
+                confirmColor: "#FF6D00",
+                success: (res) => {
+                    var confirm = res.confirm;
+                    var cancel = res.cancel;
 
-                if (confirm) {
-                    //@todo
-                    this.login();
-                } else if (cancel) {
-                    //@todo
-                    wx.navigateBack({
-                        complete: (res) => {},
-                    })
+                    if (confirm) {
+                        //@todo
+                        this.login();
+                    } else if (cancel) {
+                        //@todo
+                        wx.navigateBack({
+                            complete: (res) => {},
+                        })
+                    }
                 }
-            }
-        })
+            })
+        }
 
         this.emit(event.name, event);
     },
