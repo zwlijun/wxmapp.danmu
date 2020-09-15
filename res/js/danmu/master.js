@@ -128,7 +128,7 @@ const DanmuMaster = {
             DanmuMaster.master.terminate();
         }
     },
-    test: function() {
+    test: function(min = 30, max = 800) {
         DanmuMaster.open();
 
         if (DanmuMaster.testTimer) {
@@ -141,7 +141,7 @@ const DanmuMaster = {
 
             DanmuMaster.testTimer = setTimeout(() => {
                 _test()
-            }, DanmuMaster.random(30, 800));
+            }, DanmuMaster.random(min || 30, max || 800));
         }
 
         _test();
